@@ -138,7 +138,7 @@ class AlarmPlugin(Plugin):
 
         # Get pub time
         alarm_epoch = msg.header.stamp.to_time()
-        formatted_time = datetime.datetime.fromtimestamp(alarm_epoch).strftime('%I:%M:%S.%f')
+        formatted_time = datetime.datetime.fromtimestamp(alarm_epoch).strftime('%H:%M:%S.%f')
         row_elements.append(formatted_time)
         color = self._severity_mapping[msg.severity]
         self.alarm_table.insertRow(0)

@@ -2,9 +2,8 @@
 import rospy
 import json
 from sub8_msgs.msg import Alarm
-from std_msgs.msg import Header
+import datetime
 from sub8_alarm import alarms
-import string
 
 
 class AlarmHandler(object):
@@ -31,9 +30,8 @@ class AlarmHandler(object):
                 if hasattr(CandidateAlarm, 'handle'):
                     self.scenarios[CandidateAlarm.alarm_name] = CandidateAlarm()
 
-
     def alarm_callback(self, alarm):
-        time = alarm.header.stamp
+        alarm_time = alarm.header.stamp
         if alarm.action_required:
             rospy.logwarn(
                 "{}: {}, severity {}, handling NOW".format(
@@ -41,9 +39,11 @@ class AlarmHandler(object):
                 )
             )
 
+        formatted_time = datetime.datetime.fromtimestamp(alarm_time.to_time()).strftime('%H:%M:%S')
+
         rospy.logwarn(
             "{} raised alarm of type {} of severity {} at {}".format(
-                alarm.node_name, alarm.alarm_name, alarm.severity, time
+                alarm.node_name, alarm.alarm_name, alarm.severity, formatted_time
             )
         )
 
@@ -51,7 +51,7 @@ class AlarmHandler(object):
 
         # Decode JSON
         parameters = json.loads(alarm.parameters)
-        scenario.handle(time, parameters)
+        scenario.handle(alarm_time, parameters)
 
 
 if __name__ == '__main__':
