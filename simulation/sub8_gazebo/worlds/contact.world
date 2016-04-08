@@ -4,11 +4,10 @@
 
     <light name="illum" type="point">
       <pose>5 5 -10 0 0 0</pose>
-
-      <diffuse>0.4 0.4 0.9 1</diffuse>
+      <diffuse>0.4 0.8 0.8 1</diffuse>
       <attenuation><constant>1</constant></attenuation>
-
     </light>
+
     <include>
       <uri>model://sun</uri>
     </include>
@@ -92,8 +91,8 @@
             <box><size>1.2 .15 .05</size></box>
           </geometry>
           <material>
-            <ambient>1 0.627 0.478 1</ambient>
-            <diffuse>1 0.627 0.478 1</diffuse>
+            <ambient>0.35294118  0.25098039  0.14509804 1</ambient>
+            <diffuse>0.35294118  0.25098039  0.14509804 1</diffuse>
             <specular>0.1 0.1 0.1 1</specular>
             <emissive>0 0 0 0</emissive>
           </material>
@@ -112,7 +111,6 @@
           </geometry>
         </collision>
         <visual name="bodyvisual">
-          <!-- <pose>0 0 0 0 0 0</pose> -->
           <geometry>
             <sphere><radius>.11</radius></sphere>
           </geometry>
@@ -172,7 +170,6 @@
           <visual name="visual">
             <pose>0 0 0 0 0 1.5707</pose>
             <geometry>
-              <!-- <mesh><uri>model://sub8/meshes/sub.dae</uri></mesh> -->
                 <box><size>.5588 .5588 .381</size></box>
             </geometry>
           </visual>
@@ -195,7 +192,6 @@
               <k3>0</k3>
               <p1>0</p1>
               <p2>0</p2>
-              <!-- <center>320 240</center> -->
             </distortion>
           </camera>
           <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
@@ -211,8 +207,6 @@
             <distortionK3>0</distortionK3>
             <distortionT1>0</distortionT1>
             <distortionT2>0</distortionT2>
-            <!-- <Cx>320</Cx> -->
-            <!-- <Cy>240</Cy>-->
           </plugin>
         </sensor>
 
@@ -234,7 +228,6 @@
               <k3>0</k3>
               <p1>0</p1>
               <p2>0</p2>>
-              <!-- <center>320 240</center>-->
             </distortion>
           </camera>
           <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
@@ -250,13 +243,10 @@
             <distortionK3>0</distortionK3>
             <distortionT1>0</distortionT1>
             <distortionT2>0</distortionT2>
-            <!-- <Cx>320</Cx>
-            <Cy>240</Cy> -->
           </plugin>
         </sensor>
         <sensor name="down_camera" type="camera">
           <camera>
-            <!-- <pose>0.0537 0.1048 -0.2565  0 3.141592653589793 -1.5707963267948966</pose> -->
             <pose>0.0537 0.1048 -0.2565  0 1.57 3.1415</pose>
             <horizontal_fov>1.047</horizontal_fov>
             <image>
