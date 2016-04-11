@@ -1,4 +1,11 @@
 # flake8: noqa
+import image_helpers
+import init_helpers
+import msg_helpers
+import threading_helpers
+import geometry_helpers
+
+# TODO: Adjust all existing code to not require these to be top-level imports
 from init_helpers import wait_for_param, wait_for_subscriber
 from image_helpers import Image_Subscriber, Image_Publisher, make_image_msg, get_image_msg, get_parameter_range
 from msg_helpers import (
@@ -9,4 +16,4 @@ from msg_helpers import (
 )
 from threading_helpers import thread_lock
 from geometry_helpers import (make_rotation, normalize, skew_symmetric_cross, deskew, compose_transformation,
-                              project_pt_to_plane, clip_norm)
+                             project_pt_to_plane, clip_norm)
